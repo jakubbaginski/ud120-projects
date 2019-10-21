@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive, DISPLAY=${DISPLAY}
 
 RUN apt-get update \
 	&& apt-get -y install python3-sklearn python3-numpy python3-scipy python3-matplotlib cython3 python3-nltk \
-	&& apt-get -y install bash xauth sudo vim openssh-server \
+	&& apt-get -y install bash xauth sudo vim openssh-server git \
 	&& apt-get clean \
 	&& apt-get purge -y --auto-remove 
 
