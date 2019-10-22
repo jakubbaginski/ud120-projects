@@ -45,5 +45,6 @@ python3 /ud120/choose_your_own/your_algorithm_test.py
 
 ### TO DO
 - compatibility with Python 3 - all examples/assignemnts have to be checked and modified<br>
-- code static verification to be added
-
+- add code static verification
+- add docker volumes (in order code modifications are not lost after container restarts)
+- add cloning of the project from git at the very first start of environment
