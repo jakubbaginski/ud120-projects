@@ -10,12 +10,14 @@ The goal of this project is to provide a docker image for the course and make ex
 ### 3. Play with, modify and execute scripts :)
 
 <code>
-export DISPLAY=`ifconfig en0 | grep "inet " | awk '{print $2}'`:0.0<br>
-xhost +<br>
+export DISPLAY=`ifconfig en0 | grep "inet " | awk '{print $2}'`:0.0
+</code><code>
+xhost +
+</code><code>
 docker container run --rm -e DISPLAY -it --name ml jakubbaginski/ud120-projects:debian-python3-1.0.2
+</code><code>
 python3 /ud120/choose_your_own/your_algorithm_test.py
 </code>
-
 <br>
 <br>
 OR run specific scripts directly
@@ -33,7 +35,9 @@ docker container run --rm -e DISPLAY jakubbaginski/ud120-projects:debian-python3
 
 <code>
 docker container run -d --rm -p 10022:22 --name ml jakubbaginski/ud120-projects:debian-python3-1.0.1 /bin/bash -c 'while [ 1 ]; do sleep 30; done;'
+</code><code>
 ssh -l ud120 -Y -p 10022 -v  127.0.0.1
+</code><code>
 python3 /ud120/choose_your_own/your_algorithm_test.py
 </code>
 
