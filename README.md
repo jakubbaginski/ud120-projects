@@ -11,11 +11,11 @@ The goal of this project is to provide a docker image for the course and make ex
 
 <code>
 export DISPLAY=`ifconfig en0 | grep "inet " | awk '{print $2}'`:0.0
-</code><code>
+</code><code><br>
 xhost +
-</code><code>
+</code><code><br>
 docker container run --rm -e DISPLAY -it --name ml jakubbaginski/ud120-projects:debian-python3-1.0.2
-</code><code>
+</code><code><br>
 python3 /ud120/choose_your_own/your_algorithm_test.py
 </code>
 <br>
@@ -35,15 +35,15 @@ docker container run --rm -e DISPLAY jakubbaginski/ud120-projects:debian-python3
 
 <code>
 docker container run -d --rm -p 10022:22 --name ml jakubbaginski/ud120-projects:debian-python3-1.0.1 /bin/bash -c 'while [ 1 ]; do sleep 30; done;'
-</code><code>
+</code><code><br>
 ssh -l ud120 -Y -p 10022 -v  127.0.0.1
-</code><code>
+</code><code><br>
 python3 /ud120/choose_your_own/your_algorithm_test.py
 </code>
 
 ------------------------------------------------------
 
-TO DO
-- compatibility with Python 3 - all examples/assignemnts have to be checked and modified
+### TO DO
+- compatibility with Python 3 - all examples/assignemnts have to be checked and modified<br>
 - code static verification to be added
 
