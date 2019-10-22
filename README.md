@@ -1,39 +1,50 @@
 ud120-projects
 ==============
 
-Starter project code for students taking Udacity ud120
-The goal is to provide a docker image for the course and rewrite all examples/assignments to be python3 compatibile
+Starter project code for students taking Udacity ud120.<br>
+The goal of this project is to provide a docker image for the course and make examples/assignments compatibile with Python3<br>
 
-# How to use it:
-# 1. Set DISPLAY env to <your IP>:0.0
-# 2. Run container 
-# 3. Play with, modify and execute scripts 
+## How to use it:
+### 1. Set DISPLAY env to \<your IP\>:0.0
+### 2. Run container 
+### 3. Play with, modify and execute scripts :)
 
-<br>>export DISPLAY=`ifconfig en0 | grep "inet " | awk '{print $2}'`:0.0
-<br>>xhost +
-<br>>docker container run --rm -e DISPLAY -it --name ml jakubbaginski/ud120-projects:debian-python3-1.0.1
-<br>>python3 /ud120/choose_your_own/your_algorithm_test.py
+<code>
+export DISPLAY=`ifconfig en0 | grep "inet " | awk '{print $2}'`:0.0
+</code><br><code>
+xhost +
+</code><br><code>
+docker container run --rm -e DISPLAY -it --name ml jakubbaginski/ud120-projects:debian-python3-1.0.2
+</code><br><code>
+python3 /ud120/choose_your_own/your_algorithm_test.py
+</code>
 <br>
 <br>
 OR run specific scripts directly
-<br>
-<br>>docker container run --rm -e DISPLAY jakubbaginski/ud120-projects:debian-python3-1.0.1 python3 choose_your_own/your_algorithm_test.py
+<br><br>
+<code>
+docker container run --rm -e DISPLAY jakubbaginski/ud120-projects:debian-python3-1.0.2 python3 choose_your_own/your_algorithm_test.py
+</code>
 
----------------------------
----------------------------
+------------------------------------------------------
 
-# Optional use via ssh
-# 1. Start container (detached mode)
-# 2. Connect via SSH
-# 3. Play with, modify and execute scripts
+## Optional use via ssh
+### 1. Start container (detached mode)
+### 2. Connect via SSH
+### 3. Play with, modify and execute scripts :)
 
-<br>>docker container run -d --rm -p 10022:22 --name ml jakubbaginski/ud120-projects:debian-python3-1.0.1 /bin/bash -c 'while [ 1 ]; do sleep 30; done;'
-<br>>ssh -l ud120 -Y -p 10022 -v  127.0.0.1
-<br>>python3 /ud120/choose_your_own/your_algorithm_test.py
+<code>
+docker container run -d --rm -p 10022:22 --name ml jakubbaginski/ud120-projects:debian-python3-1.0.2 /bin/bash -c 'while [ 1 ]; do sleep 30; done;'
+</code><br><code>
+ssh -l ud120 -Y -p 10022 -v  127.0.0.1
+</code><br><code>
+python3 /ud120/choose_your_own/your_algorithm_test.py
+</code>
 
+------------------------------------------------------
 
----------------------------
----------------------------
-
-TO DO
-- compatibility with Python 3 - all examples/assignemnts have to be checked and modified
+### TO DO
+- compatibility with Python 3 - all examples/assignemnts have to be checked and modified<br>
+- add code static verification
+- add docker volumes (in order code modifications are not lost after container restarts)
+- add cloning of the project from git at the very first start of environment
