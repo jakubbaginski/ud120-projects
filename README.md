@@ -21,17 +21,17 @@ python3 /ud120/choose_your_own/your_algorithm_test.py
 <br>
 <br>
 OR run specific scripts directly
-
+<br><br>
 <code>
 docker container run --rm -e DISPLAY jakubbaginski/ud120-projects:debian-python3-1.0.1 python3 choose_your_own/your_algorithm_test.py
 </code>
 
 ------------------------------------------------------
 
-### Optional use via ssh
-## 1. Start container (detached mode)
-## 2. Connect via SSH
-## 3. Play with, modify and execute scripts :)
+## Optional use via ssh
+### 1. Start container (detached mode)
+### 2. Connect via SSH
+### 3. Play with, modify and execute scripts :)
 
 <code>
 docker container run -d --rm -p 10022:22 --name ml jakubbaginski/ud120-projects:debian-python3-1.0.1 /bin/bash -c 'while [ 1 ]; do sleep 30; done;'
