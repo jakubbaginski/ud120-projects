@@ -4,7 +4,7 @@ ud120-projects
 Starter project code for students taking Udacity ud120
 The goal is to provide a docker image for the course and rewrite all examples/assignments to be python3 compatibile
 
-# How to use it:
+## How to use it:
 # 1. Set DISPLAY env to <your IP>:0.0
 # 2. Run container 
 # 3. Play with, modify and execute scripts 
