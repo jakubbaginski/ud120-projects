@@ -10,8 +10,8 @@ The goal of this project is to provide a docker image for the course and make ex
 ### 3. Play with, modify and execute scripts :)
 
 <code>
-export DISPLAY=`ifconfig en0 | grep "inet " | awk '{print $2}'`:0.0
-xhost +
+export DISPLAY=`ifconfig en0 | grep "inet " | awk '{print $2}'`:0.0</br>
+xhost +</br>
 docker container run --rm -e DISPLAY -it --name ml jakubbaginski/ud120-projects:debian-python3-1.0.2
 python3 /ud120/choose_your_own/your_algorithm_test.py
 </code>
