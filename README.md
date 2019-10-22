@@ -11,7 +11,7 @@ The goal of this project is to provide a docker image for the course and make ex
 
 <code>
 export DISPLAY=`ifconfig en0 | grep "inet " | awk '{print $2}'`:0.0
-</code><code><br>
+</code><code><br><br>
 xhost +
 </code><code><br>
 docker container run --rm -e DISPLAY -it --name ml jakubbaginski/ud120-projects:debian-python3-1.0.2
