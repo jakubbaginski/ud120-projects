@@ -34,7 +34,7 @@ docker container run -it --rm  -e DISPLAY -p 10022:22 -v ud120:/home/ud120/ -nam
 ### 3. Play with, modify and execute scripts :)
 
 <code>
-docker container run -it --rm  -e DISPLAY -p 10022:22 -v ud120:/home/ud120/ -name ml jakubbaginski/ud120-projects:debian-python3-1.0.3 /bin/bash -c 'while [ 1 ]; do sleep 30; done;'
+docker container run --rm  -e DISPLAY -p 10022:22 -v ud120:/home/ud120/ -name ml jakubbaginski/ud120-projects:debian-python3-1.0.3 /bin/bash -c 'while [ 1 ]; do sleep 30; done;'
 </code><br><code>
 ssh -l ud120 -Y -p 10022 -v 127.0.0.1
 </code><br><code>
