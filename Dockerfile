@@ -1,43 +1,43 @@
 FROM debian:stable-20191014
 
-#Includes files from https://github.com/jakubbaginski/ud120-projects
-#plus Enron data (see comments below)
-WORKDIR /ud120/
+ENV DISPLAY=${DISPLAY}
+ARG USER=ud120
+ARG USER_HOME=/home/${USER}
+ENV REPO_PATH=${USER_HOME}/ud120-projects/
 
-ENV DEBIAN_FRONTEND=noninteractive, DISPLAY=${DISPLAY}
+# Repository dir
+ADD ./start.sh ${USER_HOME}/
+WORKDIR ${USER_HOME}/                                          
 
-RUN apt-get update \
+# Add packages required - used in the code 
+# Add packages supporting development - vim, pylint
+# Add packages supporting ssh and display forwarding + enable X11Forwarding
+# Add dedicated linux user "ud120" + set sudo rights 
+
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
+	&& apt-get update \
 	&& apt-get -y install python3-sklearn python3-numpy python3-scipy python3-matplotlib cython3 python3-nltk \
-	&& apt-get -y install bash xauth sudo vim openssh-server git \
+	&& apt-get -y install bash xauth sudo curl vim openssh-server git pylint3 \
 	&& apt-get clean \
-	&& apt-get purge -y --auto-remove 
+	&& apt-get purge -y --auto-remove \
+	&& echo 'debconf debconf/frontend select Dialog' | debconf-set-selections \
+	&& useradd ${USER} --home ${USER_HOME} --shell /bin/bash \
+        && chown -R ${USER}:${USER} ${USER_HOME} \
+	&& usermod -a -G sudo ${USER} \
+	&& echo ${USER}"     ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
+        && sed -i 's/^#X11Forwarding.*/X11Forwarding yes/' /etc/ssh/sshd_config \
+        && sed -i 's/^#X11UseLocalhost.*/X11UseLocalhost no/' /etc/ssh/sshd_config \
+	&& sed -i 's/^ud120:.*/ud120:$6$3BZn8xHToxcZE1TU$rya\/yKhycQAnKqim3K3E7UCmQRgfnJDy2r3Q0.vDyWTnUXHrPUptK1j9CuKRilgzKJuT8rTKlF5A4cnYcTA2g\/:18189:0:99999:7:::/' /etc/shadow
+#	TO DO - correct the code
+#	&& SECRET=`python3 -c 'import crypt; print(crypt.crypt("ud120", crypt.mksalt(crypt.METHOD_SHA512)))'` \
+#       && sed -i 's/^${USER}:.*/${USER}:${SECRET}:18189:0:99999:7:::/' /etc/shadow 
 
-# Add content of the Introduction to Machine Learning couse (UdaCity)
-ADD ./ /ud120/
-
-# Add ud120 user + default password + sudo rights, enable ssh X11 forwarding	
-RUN useradd ud120 --home /home/ud120/ --shell /bin/bash \
-	&& chown -R ud120:ud120 . \
-	&& mkdir /home/ud120 \
-        && chown ud120:ud120 /home/ud120 \
-	&& sed -i 's/^#X11Forwarding.*/X11Forwarding yes/' /etc/ssh/sshd_config \
-	&& sed -i 's/^#X11UseLocalhost.*/X11UseLocalhost no/' /etc/ssh/sshd_config \
-	&& sed -i 's/^ud120:.*/ud120:$6$3BZn8xHToxcZE1TU$rya\/yKhycQAnKqim3K3E7UCmQRgfnJDy2r3Q0.vDyWTnUXHrPUptK1j9CuKRilgzKJuT8rTKlF5A4cnYcTA2g\/:18189:0:99999:7:::/' /etc/shadow \
-	&& usermod -a -G sudo ud120 \
-	&& echo "ud120     ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
-# Enron email database is already added to image
-# Download is not needed
-# RUN curl --progress-bar --ciphers AES256-SHA --output maildir/enron_mail.tar.gz https://www.cs.cmu.edu/~enron/enron_mail_20150507.tar.gz
-
-ENV DEBIAN_FRONTEND=teletype
-
-#Expose SSH access port if ssh X11 forward is used instead
+USER ${USER}:${USER}
+VOLUME ${USER_HOME}                                                                                                                                                                    
+# Expose SSH access port enabling remote access to the container
 EXPOSE 10022:22
 
-#The final image should be build with USER uncommented
-USER ud120
-
+# Startup script
 ENTRYPOINT ["./start.sh"]
 CMD ["/bin/bash"]
 
