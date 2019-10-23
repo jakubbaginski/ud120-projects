@@ -1,5 +1,13 @@
 FROM debian:stable-20191014
 
+LABEL version="1.0.4"
+LABEL author="Jakub Bagiński"
+LABEL contact="jakub.baginski@gmail.com"
+LABEL project.docker.hub.url="https://cloud.docker.com/u/jakubbaginski/repository/docker/jakubbaginski/ud120-projects"
+LABEL project.github.url="https://github.com/jakubbaginski/ud120-projects"
+LABEL project.udacity.url="https://classroom.udacity.com/courses/ud120"
+LABEL description="Python3 based development environment dedicated for 'Intro to Machine Learning course' from UdaCity."
+
 ENV DISPLAY=${DISPLAY}
 ARG USER=ud120
 ARG USER_HOME=/home/${USER}
