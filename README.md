@@ -1,55 +1,64 @@
-ud120-projects
-===========================
+## ud120-projects
+------------------------------------------------------
 
-Starter project code for students taking Udacity ud120.<br>
+Starter project code for students taking Udacity ud120 - https://classroom.udacity.com/courses/ud120 <br><br>
 The goal of this project is to provide (in addition to orginal project) a develoment env. based on docker image.<br>
 Finally the source code of course's assignemnts is now Python3 and Sklearn 0.20.2 compatibile.<br>
+Code and data are initialized during first start of container<br><br>
+
+GitHub Repository: https://github.com/jakubbaginski/ud120-projects <br>
+Docker Repository: https://cloud.docker.com/repository/docker/jakubbaginski/ud120-projects
+
+------------------------------------------------------
 
 ### How to use it:
 
 #### 1. Set DISPLAY env to \<your IP\>:0.0 and allow X11Forwarding on local machine
-<code>
+<xmp>
 export DISPLAY=`ifconfig en0 | grep "inet " | awk '{print $2}'`:0.0
-</code><br>
-<code>
 xhost +
-</code>
+</xmp>
+<br>
 
 #### 2. Run container 
-<code>
+<xmp>
 docker container run -it --rm  -e DISPLAY -p 10022:22 -v ud120:/home/ud120/ --name ml jakubbaginski/ud120-projects:debian-python3-1.0.4
-</code>
+</xmp>
+<br>
 
 #### 3. Play with, modify and execute scripts :)
-<code>
+<xmp>
 python3 /home/ud120/ud120-projects/choose_your_own/your_algorithm.py
-</code>
-<br>
+</xmp>
 <br>
 
 #### Alternative to #2 and #3 is to run specific scripts directly
-<code>
+<xmp>
 docker container run -it --rm  -e DISPLAY -p 10022:22 -v ud120:/home/ud120/ --name ml jakubbaginski/ud120-projects:debian-python3-1.0.4 python3 /home/ud120/ud120-projects/choose_your_own/your_algorithm.py
-</code>
+</xmp>
+<br>
 
 ------------------------------------------------------
 
 ### Optional use by connecting through ssh
 
 #### 1. Start container (detached mode)
-<code>
+<xmp>
 docker container run --rm  -e DISPLAY -p 10022:22 -v ud120:/home/ud120/ --name ml jakubbaginski/ud120-projects:debian-python3-1.0.4 /bin/bash -c 'while [ 1 ]; do sleep 30; done;'
-</code>
+</xmp>
+<br>
 
 #### 2. Connect via SSH (IP should point to docker host)
-<code>
+<xmp>
 ssh -l ud120 -Y -p 10022 -v 127.0.0.1
-</code>
+</xmp>
+<br>
 
 #### 3. Play with, modify and execute scripts :)
-<code>
+<xmp>
 python3 /home/ud120/ud120-projects/choose_your_own/your_algorithm.py
-</code>
+</xmp>
+<br>
 
 ------------------------------------------------------
 
@@ -59,6 +68,8 @@ python3 /home/ud120/ud120-projects/choose_your_own/your_algorithm.py
 - detached mode - start command should be simpler
 - defaulting password for user ud120 - change direct insert into something else 
 - ideas ? :)
+
+------------------------------------------------------
 
 ### Changelog
 
