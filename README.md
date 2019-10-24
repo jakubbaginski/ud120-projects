@@ -1,5 +1,5 @@
 ## ud120-projects
-------------------------------------------------------
+
 
 Starter project code for students taking Udacity ud120 - https://classroom.udacity.com/courses/ud120 <br><br>
 The goal of this project is to provide (in addition to orginal project) a develoment env. based on docker image.<br>
