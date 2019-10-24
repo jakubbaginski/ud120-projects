@@ -55,7 +55,7 @@ python3 /home/ud120/ud120-projects/choose_your_own/your_algorithm.py
 
 ### TO DO
 
-- add code static verification
+- add static code verification
 - detached mode - start command should be simpler
 - defaulting password for user ud120 - change direct insert into something else 
 - ideas ? :)
