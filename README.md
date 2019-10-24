@@ -24,7 +24,7 @@ xhost +
 #### 2. Run container 
 
 <xmp>
-docker container run -it --rm  -e DISPLAY -p 10022:22 -v ud120:/home/ud120/ --name ml jakubbaginski/ud120-projects:debian-python3-1.0.4
+docker container run -it --rm  -e DISPLAY -p 10022:22 -v ud120:/home/ud120/ --name ml jakubbaginski/ud120-projects
 </xmp>
 <br>
 
@@ -38,7 +38,7 @@ python3 /home/ud120/ud120-projects/choose_your_own/your_algorithm.py
 #### Alternative to #2 and #3 is to run specific scripts directly
 
 <xmp>
-docker container run -it --rm  -e DISPLAY -p 10022:22 -v ud120:/home/ud120/ --name ml jakubbaginski/ud120-projects:debian-python3-1.0.4 python3 /home/ud120/ud120-projects/choose_your_own/your_algorithm.py
+docker container run -it --rm  -e DISPLAY -p 10022:22 -v ud120:/home/ud120/ --name ml jakubbaginski/ud120-projects python3 /home/ud120/ud120-projects/choose_your_own/your_algorithm.py
 </xmp>
 <br>
 
@@ -49,7 +49,7 @@ docker container run -it --rm  -e DISPLAY -p 10022:22 -v ud120:/home/ud120/ --na
 #### 1. Start container (detached mode)
 
 <xmp>
-docker container run --rm  -e DISPLAY -p 10022:22 -v ud120:/home/ud120/ --name ml jakubbaginski/ud120-projects:debian-python3-1.0.4 /bin/bash -c 'while [ 1 ]; do sleep 30; done;'
+docker container run --rm  -e DISPLAY -p 10022:22 -v ud120:/home/ud120/ --name ml jakubbaginski/ud120-projects /bin/bash -c 'while [ 1 ]; do sleep 30; done;'
 </xmp>
 <br>
 
@@ -81,7 +81,7 @@ python3 /home/ud120/ud120-projects/choose_your_own/your_algorithm.py
 
 ### Changelog
 
-v.1.0.4
+v.1.0.4 / latest
 - compatibility with Python 3 - source code is modified and verified.
 
 v.1.0.3
