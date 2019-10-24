@@ -2,7 +2,7 @@ ud120-projects
 ==============
 
 Starter project code for students taking Udacity ud120.<br>
-The goal of this project is to provide (in addition to orginal project) a develoment env. based on docker image.
+The goal of this project is to provide (in addition to orginal project) a develoment env. based on docker image.<br>
 Finally the source code of course's assignemnts is now Python3 and Sklearn 0.20.2 compatibile.<br>
 
 ### How to use it:
